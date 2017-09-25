@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Devise for admin users
 gem 'devise'
+# Sendgrid for sending emails
+gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
