@@ -32,6 +32,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Sendgrid for sending emails
 gem 'sendgrid-ruby'
+# Ckeditor for editing pages
+gem 'ckeditor'
+# Paperclip for ckeditor images
+gem 'paperclip'
+# AWS SDK for storing images
+gem 'aws-sdk', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
