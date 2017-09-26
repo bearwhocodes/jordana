@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Bootsy
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  
   # Devise
   devise_for :users
 

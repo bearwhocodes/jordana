@@ -56,6 +56,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:html)
+      params.require(:note).permit(:html, :bootsy_image_gallery_id)
     end
 end

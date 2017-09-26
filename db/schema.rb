@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925211633) do
+ActiveRecord::Schema.define(version: 20170926190127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.string "bootsy_resource_type"
+    t.bigint "bootsy_resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bootsy_resource_type", "bootsy_resource_id"], name: "index_bootsy_image_galleries"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string "image_file"
+    t.bigint "image_gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_gallery_id"], name: "index_bootsy_images_on_image_gallery_id"
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string "data_file_name", null: false

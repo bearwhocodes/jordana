@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= @note.html %>
+<%= @note.html.html_safe %>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
