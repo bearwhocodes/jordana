@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @notes = Note.all
@@ -56,6 +56,6 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.fetch(:note, {})
+      params.require(:note).permit(:html)
     end
 end
