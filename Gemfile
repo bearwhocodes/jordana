@@ -34,11 +34,11 @@ gem 'devise'
 gem 'sendgrid-ruby'
 # AWS for storing images
 gem 'fog-aws'
-# Bootsy
+# Bootsy for admin image upload
 gem 'bootsy'
-# Bootstrap
+# Bootstrap for admin
 gem 'bootstrap-sass'
-# jQuery
+# jQuery for admin bootstrap
 gem 'jquery-rails'
 
 group :development, :test do
@@ -47,6 +47,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # Dot Env for environment files
+  gem 'dotenv-rails'
 end
 
 group :development do

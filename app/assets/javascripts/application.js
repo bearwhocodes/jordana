@@ -16,3 +16,32 @@
 //= require turbolinks
 //= require bootsy
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  
+  $('form').on('change', '.message-type', function() {
+    $('.message-block').hide();
+    $('.message-block input, .message-block textarea').val('');
+    if ($(this).val()) {
+      $('.message-block#' + $(this).val()).show();
+    }
+  });
+
+  $('body').on('submit', '.new_enquiry', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      url: $(this).attr('action') + '.json',
+      data: $(this).serializeArray(),
+      dataType: 'json',
+      success: function(responseData, textStatus, jqXHR) {
+        console.log("SUCCESS");
+      },
+      error: function(response) {
+        console.log(response.responseJSON);
+      }
+    });
+  });
+  
+});

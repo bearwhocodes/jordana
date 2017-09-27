@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Application routes
   resources :notes
+  resources :enquiries, only: [:index, :new, :create, :destroy]
 
   # Home route
   root 'notes#index'

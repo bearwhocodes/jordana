@@ -1,0 +1,19 @@
+<%= form_for @enquiry, remote: true do |form| %>
+  <div><label>Name</label><%= form.text_field :name %></div>
+  <div><label>Email</label><%= form.text_field :email %></div>
+  <div><label>Telephone</label><%= form.text_field :telephone %></div>
+  <div><label>What do you want me for?</label><%= form.select :message_type, options_for_select(Enquiry::MESSAGE_TYPES), {}, class: 'message-type' %></div>
+  
+  <div id="message" class="message-block">
+    <div><label>Message</label><%= form.text_area :message %></div>
+  </div>
+  
+  <div id="project" class="message-block">
+    <div><label>Budget</label><%= form.text_field :project_budget %></div>
+    <div><label>Description</label><%= form.text_area :project_description %></div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
