@@ -7,10 +7,13 @@ class Enquiry < ApplicationRecord
   ]
 
   # Validation
-  validates :name, :email, :message_type, presence: true
-  validates_presence_of :message, :if => :message_enquiry?
-  validates_presence_of :project_description, :project_budget, :if => :project_enquiry?
-  validates_format_of :email, with: Devise::email_regexp
+  validates :name, presence: { message: "Name has to be filled out" }
+  validates :email, presence: { message: "Email has to be filled out" }
+  validates :message_type, presence: { message: "Please choose an option" }
+  validates_presence_of :message, message: "Message has to be filled out", :if => :message_enquiry?
+  validates_presence_of :project_description, message: "Project Description has to be filled out", :if => :project_enquiry?
+  validates_presence_of :project_budget, message: "Please choose a budget", :if => :project_enquiry?
+  validates_format_of :email, with: Devise::email_regexp, message: "Email is not the right format"
 
   # Scopes
   scope :messages, -> { where(message_type: 'message') }
@@ -22,5 +25,9 @@ class Enquiry < ApplicationRecord
 
   def project_enquiry?
     message_type == 'project'
+  end
+
+  def budget
+    "£" + project_budget
   end
 end

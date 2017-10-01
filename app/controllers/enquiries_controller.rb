@@ -15,8 +15,8 @@ class EnquiriesController < ApplicationController
 
     respond_to do |format|
       if @enquiry.save
-        format.html { redirect_to new_enquiry_path, notice: 'Enquiry was successfully created.' }
-        format.json { render json: 'Enquiry was successfully created.', status: :created }
+        format.html { redirect_to @enquiry, notice: 'Enquiry was successfully created.' }
+        format.json { render :show, status: :created, location: @enquiry }
       else
         format.html { render :new }
         format.json { render json: @enquiry.errors, status: :unprocessable_entity }

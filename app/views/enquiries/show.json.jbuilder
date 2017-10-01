@@ -1,1 +1,1 @@
-json.partial! "enquiries/enquiry", enquiry: @enquiry
+json.extract! @enquiry, :id, :created_at, :updated_at

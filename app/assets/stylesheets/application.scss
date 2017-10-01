@@ -1,7 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootsy";
+@import "plugins/base";
 
 #message, #project {
   display: none;
+}
+
+.spinner {
+  display: none;
+}
+
+.form-thank-you {
+  display: none;
+}
+
+#budget-range {
+  margin: 20px;
 }
