@@ -147,21 +147,23 @@ $(document).on('turbolinks:load', function() {
 
   // Project Range Slider
   $budgetRange = document.getElementById('budget-range');
-  noUiSlider.create($budgetRange, {
-    start: [$projectStarValue],
-    connect: [true, false],
-    step: 100,
-    range: {
-      'min': [ 0 ],
-      '10%': [ 500, 500 ],
-      '50%': [ 4000, 1000 ],
-      'max': [ 10000 ]
-    }
-  });
+  if ($budgetRange) {
+    noUiSlider.create($budgetRange, {
+      start: [$projectStarValue],
+      connect: [true, false],
+      step: 100,
+      range: {
+        'min': [ 0 ],
+        '10%': [ 500, 500 ],
+        '50%': [ 4000, 1000 ],
+        'max': [ 10000 ]
+      }
+    });
 
-  // On slide update the text field
-  $budgetRange.noUiSlider.on('update', function( values, handle ) {
-    $('#enquiry_project_budget').val(parseInt(values[handle]));
-  });
+    // On slide update the text field
+    $budgetRange.noUiSlider.on('update', function( values, handle ) {
+      $('#enquiry_project_budget').val(parseInt(values[handle]));
+    });
+  }
   
 });

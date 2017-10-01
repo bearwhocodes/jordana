@@ -1,0 +1,14 @@
+<p>Hi JJ! You have received a new enquiry:</p>
+
+<p>Name: <%= @enquiry.name %></p>
+<p>Email: <%= @enquiry.email %></p>
+<% if @enquiry.telephone.present? %>
+  <p>Telephone: <%= @enquiry.telephone %></p>
+<% end %>
+<p>Message Type: <%= @enquiry.decorated_message_type %></p>
+<% if @enquiry.message_enquiry? %>
+  <p>Message: <%= @enquiry.message %></p>
+<% else %>
+  <p>Budget: <%= @enquiry.budget %></p>
+  <p>Project Description: <%= @enquiry.project_description %></p>
+<% end %>

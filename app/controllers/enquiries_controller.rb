@@ -1,6 +1,6 @@
 class EnquiriesController < ApplicationController
-  before_action :set_enquiry, only: [:destroy]
-  before_action :authenticate_user!, only: [:index, :destroy]
+  before_action :set_enquiry, only: [:show, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :destroy]
 
   def index
     @enquiries = Enquiry.all
@@ -8,6 +8,10 @@ class EnquiriesController < ApplicationController
 
   def new
     @enquiry = Enquiry.new
+  end
+
+  def show
+
   end
 
   def create

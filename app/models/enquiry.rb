@@ -16,9 +16,14 @@ class Enquiry < ApplicationRecord
   validates_format_of :email, with: Devise::email_regexp, message: "Email is not the right format"
 
   # Scopes
+  default_scope { order(created_at: :desc) }
   scope :messages, -> { where(message_type: 'message') }
   scope :projects, -> { where(message_type: 'project') }
 
+  # Callbacks
+  after_create :send_emails
+
+  # Helper Methods
   def message_enquiry?
     message_type == 'message'
   end
@@ -27,7 +32,20 @@ class Enquiry < ApplicationRecord
     message_type == 'project'
   end
 
+  # Decorator Methods
+  def decorated_message_type
+    message_type.capitalize
+  end
+
   def budget
     "£" + project_budget
+  end
+
+private
+
+  def send_emails
+    # Send emails once saved
+    EnquiryMailer.thank_you_email(self).deliver_later
+    EnquiryMailer.admin_email(self).deliver_later
   end
 end
