@@ -1,6 +1,10 @@
 # Load dot env first
-require "dotenv"
-Dotenv.load("/.env")
+begin
+  require "dotenv"
+  Dotenv.load("/.env")
+rescue
+  # Not in development
+end
 
 workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 5)
