@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170927183320) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "bootsy_image_galleries", force: :cascade do |t|
+  create_table "bootsy_image_galleries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "bootsy_resource_type"
     t.bigint "bootsy_resource_id"
     t.datetime "created_at", null: false
@@ -23,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170927183320) do
     t.index ["bootsy_resource_type", "bootsy_resource_id"], name: "index_bootsy_image_galleries"
   end
 
-  create_table "bootsy_images", force: :cascade do |t|
+  create_table "bootsy_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "image_file"
     t.bigint "image_gallery_id"
     t.datetime "created_at", null: false
@@ -31,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170927183320) do
     t.index ["image_gallery_id"], name: "index_bootsy_images_on_image_gallery_id"
   end
 
-  create_table "enquiries", force: :cascade do |t|
+  create_table "enquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.string "telephone"
@@ -43,10 +40,10 @@ ActiveRecord::Schema.define(version: 20170927183320) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "initial_users", force: :cascade do |t|
+  create_table "initial_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
   end
 
-  create_table "notes", force: :cascade do |t|
+  create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "html"
     t.datetime "publish_at"
@@ -54,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170927183320) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
