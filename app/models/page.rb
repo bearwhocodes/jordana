@@ -1,6 +1,7 @@
 class Page < ApplicationRecord
-  # Includes
-  include Bootsy::Container
+  # Relationships
+  has_many :page_elements
+  accepts_nested_attributes_for :page_elements
 
   # Validation
   validates :slug, uniqueness: true

@@ -1,0 +1,11 @@
+<% element = PageElement.find_by_slug(slug) %>
+<% if user_signed_in? %>
+  <%= form.fields_for element do |page_element_fields| %>
+    <%= element.html.html_safe %>
+    <%= page_element_fields.hidden_field :id, value: element.id, name: "page[page_elements_attributes][#{element.id}][id]" %>
+    <%= page_element_fields.hidden_field :slug, value: element.slug, name: "page[page_elements_attributes][#{element.id}][slug]" %>
+    <%= page_element_fields.bootsy_area :html, name: "page[page_elements_attributes][#{element.id}][html]", id: "page_page_elements_attributes_#{element.id}_html" %>
+  <% end %>
+<% else %>
+  <%= element.html.html_safe %>
+<% end %>

@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def show
-
+    
   end
 
   def update
@@ -21,11 +21,15 @@ class PagesController < ApplicationController
 private
 
   def set_page
-    @page = Page.find_by_slug(params[:id])
+    if ['home', 'about'].include? params[:id]
+      @page = Page.find_by_slug(params[:id])
+    else
+      @page = Page.find(params[:id])
+    end
   end
 
   def page_params
-    params.require(:page).permit(page_elements: [])
+    params.require(:page).permit(:slug, page_elements_attributes: [:html, :slug, :id])
   end
 
 end

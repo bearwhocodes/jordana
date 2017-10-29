@@ -1,1 +1,12 @@
-<%= render partial: @page.slug %>
+<% if user_signed_in? %>
+  <%= form_for @page do |form| %>
+    <% if @page.errors.any? %>
+      <%= @page.errors.full_messages %>
+    <% end %>
+    <%= form.hidden_field :slug, value: @page.slug %>
+    <%= render partial: "shared/admin_bar", locals: { form: form } %>
+    <%= render partial: @page.slug, locals: { form: form } %>
+  <% end %>
+<% else %>
+  <%= render partial: @page.slug, locals: { form: '' } %>
+<% end %>
